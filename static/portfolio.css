@@ -1,6 +1,5 @@
 @import url('static/home.css');
 
-
 ul {
     height: 50vh;
     width:25vh;
@@ -38,23 +37,6 @@ div.descriptions {
     padding: 0px;
     
 }
-
-
-/* form.formy {
-    position: absolute;
-    color: white;
-    bottom: 15%;
-}
-
-div.return-responses {
-    position: absolute;
-    display: flex;
-    width: 200px;
-    height: 100px;
-    bottom: 15%;
-    right: 15%;
-    background-color: yellow;
-} */
 
 p {
     color: white;

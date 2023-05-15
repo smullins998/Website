@@ -52,6 +52,3 @@ with app.app_context():
 
 if __name__ == '__main__':
     app.run(port=8090)
-
-
-#Hey ther
