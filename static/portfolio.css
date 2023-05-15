@@ -1,0 +1,62 @@
+@import url('static/home.css');
+
+
+ul {
+    height: 50vh;
+    width:25vh;
+    left: 0;
+    top: 20%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-evenly;
+}
+
+.divider {
+    position: relative;
+    width: 100px;
+    height: 150px;
+    display:flex;
+    align-items:center;
+    color: white;
+    padding-left: 50px;
+    
+}
+
+div.descriptions {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 10%;
+    left: 40%;
+    height: 70vh;
+    width:35vh;
+    justify-content: space-evenly;
+    align-items:center;
+    color: white;
+    padding: 0px;
+    
+}
+
+/* form.formy {
+    position: absolute;
+    color: white;
+    bottom: 15%;
+}
+
+div.return-responses {
+    position: absolute;
+    display: flex;
+    width: 200px;
+    height: 100px;
+    bottom: 15%;
+    right: 15%;
+    background-color: yellow;
+} */
+
+p {
+    color: white;
+    size: 2px;
+}
+

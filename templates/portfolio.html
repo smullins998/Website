@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='portfolio.css') }}">
+</head>
+
+{% extends "home.html" %}
+
+
+
+{% block content %}
+
+
+
+<body>
+  
+    
+    <ul>
+        <div class="divider">
+            <a href="https://google.com">
+                <box-icon name='paperclip' color="#ededed" animation="tada-hover" size='lg'></box-icon>
+            </a>
+        </div>
+        <div class="divider">
+            <a href="https://google.com">
+                <box-icon name='paperclip' color="#ededed" animation="tada-hover" size='lg'></box-icon>
+            </a>        
+        </div>
+        <div class="divider">
+            <a href="https://google.com">
+                <box-icon name='paperclip' color="#ededed" animation="tada-hover" size='lg'></box-icon>
+            </a>  
+        </div>
+      </ul>
+
+      <div class='descriptions'>
+        <p>Description 1 goes here</p>
+        <p>Description 2 goes here</p>
+        <p>Description 3 goes here</p>
+    </div>
+
+    <!-- <form action="#" method="post" class="formy">
+        <p>What do you think?</p>
+        <p><input type="text" name="nm" placeholder="name"></p>
+        <p><input type="text" name="resp" placeholder='???'></p>
+
+        
+        <p><input type="submit" value="submit"></p>
+
+    </form>
+
+    <div class="return-responses">
+        {% for item in values%}
+        <p>Response: {{item.name}}</p>
+        {%endfor%}
+    </div> -->
+
+
+    {% endblock content %}
+
+
+
+</body>
+
+</html>
