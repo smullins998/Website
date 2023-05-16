@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session
 import random
-from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 app.debug = True
@@ -29,22 +29,7 @@ def portfolio():
     return render_template('portfolio.html')
 
 
-#Backend 
-@app.route('/portfolio', methods=['POST', "GET"])
-def say_something():
-    if request.method == 'POST':
-        form_name = request.form['nm']
-        form_response = request.form['resp']
-        usr = response(form_name, '')
-        final_resp = response(form_response, '')
-        with app.app_context():
-            db.session.add(usr)
-            db.session.add(final_resp)
-            db.session.commit()
-         
-        return render_template('portfolio.html', form_response=form_response, values=response.query.all())
-    else:
-        return render_template('portfolio.html')
+
 
 
 with app.app_context():
