@@ -188,7 +188,7 @@ div.home-content {
 
 .Portfolio > h2 {
     text-align: center;
-    color: #e66f1a;
+    color: #363636;
 }
 
 .SongSpy {
@@ -201,7 +201,7 @@ div.home-content {
     display: inline-block;
     position: relative;
     font-size: 25px;
-    color: rgb(155, 155, 155);
+    color: #e66f1a;
 }
 
 .SongSpy > a:hover {
@@ -216,11 +216,12 @@ div.home-content {
     display: inline-block;
     font-family: sans-serif;
     font-size: 15px;
+    color: rgb(255, 255, 255);
 }
 
 a.medium-article {
     text-decoration: underline;
-    color: #363636;
+    color: #e66f1a;
 
 }
 a.medium-article:hover {
