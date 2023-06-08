@@ -11,15 +11,16 @@
     /* background: linear-gradient(to bottom, #375267, #69768b); */
     background: #ffb38d;
     color: #363636;
+    overflow: hidden;
 }
 
 
 .header {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0; 
     width: 100%;
-    padding: 20px 10%;
+    padding: 10px 10%;
     background: transparent;
     display: flex;
     justify-content: space-between;
@@ -32,10 +33,11 @@
 
 .logo {
     position: relative;
-    font-size: 35px;
+    font-size: 45px;
     text-decoration: none;
     font-weight: 600px;
     color: #363636;
+
 }
 
 .logo::before {
@@ -129,8 +131,6 @@ div.home-content {
 
 
 .btn-box a:hover {
-    /* width: 500px;
-    height: 45px; */
     color: white;
     transition-duration: 1s;
 }
@@ -178,12 +178,14 @@ div.home-content {
 
 .Portfolio {
     width: 45vw;
-    height: 60vh;
+    height: 55vh;
     position: absolute;
     right: 5%;
-    top: 150px;
-    border: 4px dotted #363636;
-    border-radius: 10px;
+    top: 20vh;
+    border: 3px solid #363636;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    padding: 5px;
 }
 
 .Portfolio > h2 {
@@ -195,20 +197,28 @@ div.home-content {
     width: 100%;
     height: auto;
     padding: 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
 }
 
 .SongSpy > a {
     display: inline-block;
     position: relative;
     font-size: 25px;
-    color: #e66f1a;
+    color: #363636;
 }
 
 .SongSpy > a:hover {
     transition-duration: .5s;
     color: #e66f1a;
-
 }
+
+div.SongSpy:hover {
+    transition-duration: .5s;
+    background-color: #fbcba9;
+    border-radius: 20px;
+}
+
 
 .SongSpy > p {
     width: auto;
@@ -216,7 +226,7 @@ div.home-content {
     display: inline-block;
     font-family: sans-serif;
     font-size: 15px;
-    color: rgb(255, 255, 255);
+    color: #363636;
 }
 
 a.medium-article {
@@ -229,7 +239,6 @@ a.medium-article:hover {
     color: #e66f1a;
 
 }
-
 
 
 /* Keyframes Animation */
@@ -260,4 +269,13 @@ a.medium-article:hover {
   @font-face {
     font-family: 'CustomFont';
     src: url('/fonts/occupied-font/Occupied-R826.otf') format('truetype');
+  }
+
+  @media (max-width: 700px) {
+    .SongSpy > p {
+        font-size: 20px;
+    }
+    .home-content p {
+        font-size: 20px;
+    }
   }
