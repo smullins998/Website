@@ -199,6 +199,8 @@ div.home-content {
     padding: 10px;
     transition: background-color 0.3s ease;
     border-radius: 20px;
+    background-color: #fbcba9;
+    border-radius: 20px;
 }
 
 .SongSpy > a {
@@ -215,7 +217,7 @@ div.home-content {
 
 div.SongSpy:hover {
     transition-duration: .5s;
-    background-color: #fbcba9;
+    background-color: #fcdac3;
     border-radius: 20px;
 }
 
