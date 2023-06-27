@@ -8,8 +8,7 @@
 }
 
  body {
-    /* background: linear-gradient(to bottom, #375267, #69768b); */
-    background: #ffb38d;
+    background: #c7d4dd;
     color: #363636;
     overflow: hidden;
 }
@@ -47,37 +46,34 @@
     right: 0;
     width: 100%; 
     height: 100%;
-    background:#ffb38d;
+    background:#c7d4dd;
     animation: showRight 1s ease forwards;
     animation-delay: .1s;
 }
 
 
-div.home-content {
-
+.home-content {
     background-color: transparent;
-    width: 30vw;
-    left: 100px;
-    top:30%;
+    width: 50vw;
+    left: 150px;
+    top:20%;
     position: absolute;
-
 }
 
 .home {
     height: 100vh;
+    width: 100vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     padding: 0 15%;
     padding-bottom: 50px;
-
-
 }
 
 
 .home-content h1 {
     position: relative;
-    font-size: 50px; 
+    font-size: 70px; 
     font-weight: 700px;
     padding-top: 10px;
     animation: cool-text;
@@ -91,9 +87,9 @@ div.home-content {
 
 .home-content h3 {
     position: relative;
-    font-size: 30px;
-    font-weight: 700px;
-    color: #e66f1a;
+    font-size: 50px;
+    font-weight: 1000px;
+    color: #9a9999;
     animation: cool-text;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
@@ -103,166 +99,31 @@ div.home-content {
 
 .home-content p {
     position: relative;
-    font-size: 15px;
+    font-size: 25px;
     font-weight: 700px;
     padding-top: 10px;
-    font-family: sans-serif;
-
+    line-height: 45px;
+    color: #353535;
+    font-weight:350;
+    
 }
 
-
-.home-content p::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background:transparent;
-    animation: showRight 1.5s ease forwards;
-    animation-delay: 1s;
-}
-
-
-.btn-box {
-    width: 500px;
-    height: 40px;
-    padding: 1px;
-}
-
-
-.btn-box a:hover {
-    color: white;
-    transition-duration: 1s;
-}
-
-
-.btn-box a {
-    display: absolute;
-    width: 23%;
-    height: 100%;
-    background-color: #e66f1a;
-    color: #363636;
-    border: 10px solid #e66f1a ;
-    border-radius: 25px;
-    font-size: 20px;
-    text-decoration: none;
-    z-index: 1;
-    letter-spacing: .3px;
-
-}
-
-.social-media {
-    position: absolute;
-    bottom: 25px;
-    width: 300px;
-    display: flex;
-    justify-content: space-evenly;
-    color: #363636;
-
-}
-
-.social-media a {
-    display: inline-flex;
-    width: 50px;
-    height: 50px;
-    align-items: center;
-    background: transparent ;
-    justify-content: center;
-    border: 3px solid;
-    border-radius: 25px;
-    font-size:  20px;
-    text-decoration: none;
-    color: #363636;
-
-}
-
-.seanface {
+.gif iframe {
+    width: 200px;
+    height: 150px;
     position:absolute;
-    display: flex;
-    height: 140px;
-    width: 140px;
-    left: 430px;
-    top: 28vh;
-    box-sizing: border-box;
+    bottom: 5%;
+    left: 10%;
 
 }
 
-.seanface > img {
-    height: 140px;
-    width: 140px;
-    border: 4px solid  #363636;
-    border-radius: 250px;
-    background-color: #fbcba9;
-}
-
-
-
-.Portfolio {
-    width: 45vw;
-    height: 55vh;
+.div1 {
+    background-color: yellow;
+    width: 500px;
+    height: 500px;
     position: absolute;
-    right: 5%;
-    top: 20vh;
-    border: 3px solid #363636;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    padding: 5px;
 }
 
-.Portfolio > h2 {
-    text-align: center;
-    color: #363636;
-}
-
-.SongSpy {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    transition: background-color 0.3s ease;
-    border-radius: 20px;
-    background-color: #fbcba9;
-    border-radius: 20px;
-}
-
-.SongSpy > a {
-    display: inline-block;
-    position: relative;
-    font-size: 25px;
-    color: #363636;
-}
-
-.SongSpy > a:hover {
-    transition-duration: .5s;
-    color: #e66f1a;
-}
-
-div.SongSpy:hover {
-    transition-duration: .5s;
-    background-color: #fcdac3;
-    border-radius: 20px;
-}
-
-
-.SongSpy > p {
-    width: auto;
-    height: auto;
-    display: inline-block;
-    font-family: sans-serif;
-    font-size: 15px;
-    color: #363636;
-}
-
-a.medium-article {
-    text-decoration: underline;
-    color: #e66f1a;
-
-}
-a.medium-article:hover {
-    transition-duration: .5s;
-    color: #e66f1a;
-
-}
 
 
 /* Keyframes Animation */
@@ -289,11 +150,7 @@ a.medium-article:hover {
       opacity: 1;
     }
   }
-  
-  @font-face {
-    font-family: 'CustomFont';
-    src: url('/fonts/occupied-font/Occupied-R826.otf') format('truetype');
-  }
+
 
   @media (max-width: 1000px) {
     .SongSpy > p {
@@ -308,3 +165,5 @@ a.medium-article:hover {
 
     }
   }
+
+
