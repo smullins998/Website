@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/home.css">
     <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
-                
+ 
 </head>
 
 
@@ -26,7 +26,7 @@
             <p>With three years of experience in Data Analytics and Finance,
                  I am currently seeking a career transition into the Data Science industry. 
                  Below, you will find my portfolio showcasing my work where I talk about my 
-                 website, SongSpy, along with other projects.
+                 website, SongSpy, along with other projects. More to come...
             </p>
         </div>
 
@@ -35,14 +35,126 @@
         </div>
     </section>
 
-    <section class="Project1">
-        <div class="div1">
-          <p>hi</p>
+    <div class='break1'></div>
+
+  <section class="Project1">
+         <div class="Header1">
+            <h2>Identifying Artificailly Generated Music: SongSpy</h2>
+         </div>
+         <div class="content1">
+            <div class="row1">
+        
+                <div class="col1">
+                    <div class="text1">
+                    With the recent surge of Artificial Intelligence methods entering popular culture, many individuals and industries are assessing how this revolution will impact them. While it’s anticipated that AI will influence every sector, the audio and entertainment industry is likely to experience significant disruption.                
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <div class="text1">
+                        The following model uses Machine Learning to identify artificailly generated
+                        music.
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <div class="subheader1">
+                        Data Used
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <div class="text1">
+                        We gather audio files from popular artists who are being cloned (Drake, The Weekend, ect...) using PyTube.
+                        The dataset we gather is 1,000 audio files from various artists:
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <img src="/static/Artists.png" alt="Artists" style="border-radius: 25px; width:22vw">
+                    <div class="text1">The feature extraction process is somewhat experimental, but the two features I found to perform classification the best are:
+                    </div>
+                    <ul style="font-size: 15px;">
+                        <li>
+                            MFCCs — Mel Frequency Cepstral Coefficients
+                        </li>
+                        <li>
+                            Spectral Contrast
+                        </li>
+                    </ul>
+
+                    <div style="height: 10px;"></div>
+                    <div class="subheader1">
+                        Understand the Data
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <div class="text1">
+                        We conduct a PCA analysis to better understand the dimensionality of our features, and if there 
+                        are variances between artists that we can we confident in. 
+                    </div>
+                </div>
+                <div class="col1">
+                    <img src="/static/PCA.png" alt="PCA" style="border-radius: 25px; width:22vw">
+
+                </div>
+                <div class="col1">
+                </div>
+
+            </div>
         </div>
+    </section> 
+
+    <div class="break1"></div>
+
+    <section class="aboutme">
+        <div class="Header1">
+           <h2>About Me</h2>
+        </div>
+        <div class="content1" style="display: flex;">
+            <div class="col2">
+                <div style="font-family: 'Georgia'; font-weight: bold; text-align: left;    border-bottom: 2px solid black;                ">  
+                    Work Experience
+                </div>
+                <div style="height: 5px"></div>
+                <div class="workbox">
+                        <p class="workdates" style="font-style: italic; font-weight: bold;">09/2022 to 05/2023 - </p>
+                        <p>Data Analytics at Greystone Monticello</p>
+                </div>
+                <div style="height: 5px"></div>
+                <div class="workbox">
+                    <p class="workdates" style="font-style: italic; font-weight: bold;">08/2020 to 09/2022 - </p>
+                    <p>Data Analytics at OpenExchange, Inc.</p>
+                </div>
+                <div style="height: 10px;"></div>
+                <div style="font-family: 'Georgia'; font-weight: bold; text-align: left;    border-bottom: 2px solid black;                ">  
+                    Education
+                </div>
+                <div style="height: 5px"></div>
+                <div class="workbox">
+                        <p class="workdates" style="font-style: italic; font-weight: bold;">2016 to 2020 - </p>
+                        <p>Bachelor's Degree in Finance at Boston College</p>
+                </div>
+                <div style="height: 5px"></div>
+                <div class="workbox">
+                    <p class="workdates" style="font-style: italic; font-weight: bold;">2021 - </p>
+                    <p>
+                        Master's Degree in Quantitative Finance at Boston College
+                    </p>
+                </div>
+            
+            </div>
 
 
-    </section>
+            <div class="col1">
+                <div>
+                    <div class="Sean"> 
+                    <img src="/static/sean-3.png" alt="Sean">
+                    </div> 
+                </div>
+            </div>
 
+            <div class="bottom-socials">
+                <div class="social-media">
+                    <a href="https://www.linkedin.com/in/sean-mullins-3b2198127/"><div class="linkedin">Linkedin</div></a>
+                    <a href="https://github.com/smullins998"><div class="github">Github</div></a>
+                    <a href="mailto:smullins998@gmail.com"><div class="email">Email</div></a>
+                    <a href="/static/Sean Mullins.pdf" download="/static/Sean Mullins.pdf"><div class="resume">Resume</div></a>
+                  </div>
+            </div>
+        </div>
+     </section>
 
 
 </body>
