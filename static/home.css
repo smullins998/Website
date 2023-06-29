@@ -59,9 +59,9 @@ li {
 
 .home-content {
     background-color: transparent;
-    width: 50vw;
+    width: 60vw;
     left: 150px;
-    top:20%;
+    top:15%;
     position: absolute;
 }
 
@@ -109,11 +109,11 @@ li {
 }
 
 .gif iframe {
-    width: 200px;
-    height: 150px;
+    width: 10vw;
+    height: 25vh;
     position:absolute;
     bottom: 5%;
-    left: 10%;
+    left: 35%;
 
 }
 
@@ -213,13 +213,14 @@ li {
     flex: 0 0 auto;
     width: 50.0%;
     margin-right: 100px;
-
+    top: 0;
 
 }
 
 .bottom-socials { 
     width: 80%;
-    bottom: 7%;
+    bottom: 5%;
+   
     position: absolute;
   }
 
@@ -323,4 +324,24 @@ li {
   }
 
 
+  @media (max-width: 900px) {
+    .home-content h1 {
+      font-size: 8vw;
+    }
+    .home-content h3 {
+        font-size: 6vw;
+      }
+
+    .home-content p {
+        font-size: 3vw;
+      }
+      .gif iframe {
+        width: 10vw;
+        height: 25vh;
+        position:absolute;
+        bottom: 0%;
+        left: 50%;
+    
+    }
+  }
 
