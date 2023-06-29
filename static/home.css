@@ -17,6 +17,10 @@ div {
     display: block;
 }
 
+section {
+    height: fit-content;
+}
+
 ul li::marker {
   color: rgb(0, 0, 0);
   text-indent: 20px;
@@ -125,7 +129,8 @@ li {
     position: relative;
     display: block;
     width: 100vw;
-    height: 160vh;
+    /* height: calc(1950px - 35vw); */
+    /* Adjust the multiplier to control the rate of increase */
     min-height: 50vh;
     background-color: #f2f4f4;
     color: black;
@@ -196,7 +201,6 @@ li {
     position: relative;
     display: block;
     width: 100vw;
-    height: 60vh;
     min-height: 50vh;
     background-color: #f2f4f4;
     color: black;
@@ -208,7 +212,7 @@ li {
     padding-left: calc(var(--bs-gutter-x) * 0.8);
     flex: 0 0 auto;
     width: 50.0%;
-    margin-right: 250px;
+    margin-right: 100px;
 
 
 }
@@ -292,17 +296,6 @@ li {
   }
 
 
-.mediumlink {
-    font-family: 'Georgia';
-    font-size: 15px;
-    margin-left: 40%;
-    margin-top: 150px;
-    color: black;
-
-
-
-
-}
 
 
 /* Keyframes Animation */
