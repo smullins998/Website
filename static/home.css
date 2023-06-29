@@ -110,7 +110,7 @@ li {
 }
 
 .gif iframe {
-    width: 10vw;
+    width: 15vw;
     height: 25vh;
     position:absolute;
     bottom: 5%;
@@ -305,18 +305,18 @@ li {
 
   @media (max-width: 900px) {
     .home-content h1 {
-      font-size: 8vw;
+      font-size: 9vw;
     }
     .home-content h3 {
-        font-size: 6vw;
+        font-size: 7vw;
       }
 
     .home-content p {
-        font-size: 3vw;
+        font-size: 5vw;
       }
       .gif iframe {
-        width: 25vw;
-        height: 35vh;
+        width: 0vw;
+        height: 0vh;
         position:absolute;
         bottom: 0%;
         left: 50%;
