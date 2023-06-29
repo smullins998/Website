@@ -125,7 +125,7 @@ li {
     position: relative;
     display: block;
     width: 100vw;
-    height: 120vh;
+    height: 160vh;
     min-height: 50vh;
     background-color: #f2f4f4;
     color: black;
@@ -179,8 +179,9 @@ li {
     text-align:left;
     color: black;
     line-height: 25px;
-    display: flex;
+    display: inline-block;
 }
+
 
 .subheader1 {
     font-family: 'Georgia';
@@ -206,7 +207,7 @@ li {
     padding-right: calc(var(--bs-gutter-x) * 0.8);
     padding-left: calc(var(--bs-gutter-x) * 0.8);
     flex: 0 0 auto;
-    width: 45.0%;
+    width: 50.0%;
     margin-right: 250px;
 
 
@@ -241,18 +242,20 @@ li {
     text-transform: uppercase;
   }
   
- a {
+ .social-media > a {
     background-color:#c7d4dd;
     text-decoration: none;    
     color: black;
 }
 
-a:hover {
+.social-media > a:hover {
     background-color:#5689ad;
     transition-duration: .5s;
     text-decoration: none;    
     color: black;
 }
+
+
 
   .Sean {
     border: solid 2px black;
@@ -288,6 +291,18 @@ a:hover {
     padding: 5px;
   }
 
+
+.mediumlink {
+    font-family: 'Georgia';
+    font-size: 15px;
+    margin-left: 40%;
+    margin-top: 150px;
+    color: black;
+
+
+
+
+}
 
 
 /* Keyframes Animation */

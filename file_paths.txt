@@ -1,0 +1,29 @@
+./.DS_Store
+./requirements.txt
+./Datasets/LABEL_DF.csv
+./Datasets/MFCC_DF.csv
+./__pycache__/ProbabilityChart.cpython-311.pyc
+./file_paths.txt
+./static/Sean Mullins.pdf
+./static/Models.png
+./static/home.css
+./static/SVM.png
+./static/Artists.png
+./static/KNN.png
+./static/Corre.png
+./static/RF.png
+./static/MLP.png
+./static/PCA.png
+./static/sean-3.png
+./instance/users.sqlite3
+./app.py
+./templates/home.html
+./templates/model.js
+./Procfile
+./Archived/sean-css.png
+./Archived/PaperLayer.png
+./Archived/underline.png
+./Archived/portfolio (archive).html
+./Archived/Sean.jpg
+./Archived/portfolio.css
+./Archived/sean-2.png
