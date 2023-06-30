@@ -1,0 +1,18 @@
+import yfinance as yf
+from tqdm import tqdm
+
+x=0
+
+for i in tqdm(ticker_list):
+
+    if x==0:
+        temp_df = yf.download('AAPL').Close
+        temp_df = pd.DataFrame(temp_df)
+        temp_df = temp_df.rename(columns={'Close':"AAPL"})
+        x+=1
+    if x>0:
+        temp_df1 = yf.download(i).Close
+        temp_df1 = pd.DataFrame(temp_df1)
+        temp_df1 = temp_df1.rename(columns={'Close':i})
+
+        temp_df = temp_df.merge(temp_df1, how='left',left_index=True, right_index=True)

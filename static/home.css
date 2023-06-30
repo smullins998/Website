@@ -19,27 +19,50 @@ div {
     display: block;
 }
 
+
 section {
     height: fit-content;
 }
 
-ul li::marker {
-  color: rgb(0, 0, 0);
-  text-indent: 20px;
-}
-
-ul {
-    padding-left: 20px;
-    font-family: 'Georgia';
+ul > li {
+  list-style-type: circle; /* Bullet style (can be 'circle', 'square', etc.) */
+  margin-left: 10px; /* Indentation for the list */
+  padding-left: 10px; /* Padding for the list */
 }
 
 li {
-    font-family: 'Georgia';
-    font-size: 15px;
-    margin: 0 auto;
-    text-align:left;
-    color: black;
-    line-height: 25px;
+  list-style-type: circle; /* Bullet style (can be 'circle', 'square', etc.) */
+  font-family: 'Georgia';
+  font-size: 15px;
+  margin: 0 auto;
+  color: black;
+  line-height: 25px;
+}
+
+
+li > p {
+  margin-bottom: 10px; /* Spacing between list items */
+  font-family: 'Georgia';
+  font-size: 15px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0 auto;
+  color: black;
+  line-height: 25px;
+  display: inline;
+}
+
+div > p {
+  margin-bottom: 10px; /* Spacing between list items */
+  font-family: 'Georgia';
+  font-size: 15px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0 auto;
+  color: black;
+  line-height: 25px;
+  display: inline;
+
 }
 
 .header {
@@ -300,6 +323,8 @@ li {
     font-size: 16px;
     padding: 5px;
   }
+
+
 
 
 

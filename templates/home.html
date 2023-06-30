@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="/static/home.css" />
     <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet" />
     <script src="/static/javascript/model.js"></script>
+    <script src="/static/javascript/popup.js"></script>
+
   </head>
 
   <body>
@@ -192,11 +194,130 @@
 
     <section class="Project2">
       <div class="Header1">
-        <h2>Project #2 (Soon...)</h2>
+        <h2>Reverse Momentum</h2>
       </div>
       <div class="content1">
         <div class="row1">
           <div class="col1">
+            <div class="subheader1">Intro</div>
+            <div style="height: 10px;"></div>
+
+            <div class="text1">
+              In this writeup we are going to explore a hypothesis I have stemming from stock trading sentiment around companies and adverse events.
+            </div>
+            <ul>
+              <li>
+
+               <p>Ho:</p> Markets are efficient, and Equities reflect the correct market value at any given time, specifically off the back of major events.
+              </li>
+              <li>
+               <p>Ha:</p> Equities tend to be oversold on the back of a major event (poor earnings, negative news, economic factors). 
+              </li>
+            </ul>
+            <div class="text1">
+              The COVID pandemic has stirred sizable retail trading interest
+              People are more connected, and active about how frequently they trade, leading to adverse events being oversold as people rush to get out or get into a trade. We are going to backtest this strategy over different time periods, and with different company sizes. But first, we need to get data.
+            </div>
+            <div style="height: 10px;"></div>
+            <div class="subheader1">Data Used</div>
+            <div style="height: 10px;"></div>
+           <div></div>
+           <div class="text1">
+            We are going to get closing data for all equities listed on the Nasdaq (CODE) and create a back-testing period from 2010-Present.
+           </div>
+           <div style="height: 10px;"></div>
+
+           <img src="/static/mytable.png" alt=""
+           style="width: 25vw;
+           border-radius:5px">
+           <div style="height: 10px;"></div>
+           <div class="text1">
+            We can generate summary statistics for each equity and generate a histogram of return profile of the group. This shape will ultimately resemble the market. 
+           </div>
+           <img src="/static/NASDAQ_ret.png" alt=""
+           style="width: 27vw;
+           border-radius:5px">
+           <div style="height: 10px;"></div>
+           <div class="text1">
+            Since volitility will affect our strategy, and ultimately make our return profile more chaotic, we are going to filter out less mature stocks. We will keep equities with at least 400 trading days and a return standard deviation of less than 5%.
+           </div>
+           <div style="height: 10px;"></div>
+           <div class="subheader1">Statistical Test</div>
+           <div style="height: 10px;"></div>
+           <div class="text1">
+            We are going to setup a hypothesis test to see if the returns in our sample are significantly different from the population of returns. We are going to BUY the equity if there is a single-day return of less than 10%, and sell it the next day to understand if the stock was oversold and there is rebuying the following day. To summarize, here is the buy logic (CODE):
+           </div>
+           <ul>
+            <li>
+              Market Capitalization > $5Bn
+            </li>
+            <li>
+              Std < 5% & Trading Days > 400
+            </li>
+            <li>
+              1-day return < -10%
+            </li>
+           </ul>
+          </div>
+          <div class="col1">
+            <img src="/static/samplevrandom.png" alt=""
+            style="width: 27vw;
+            border-radius:5px">
+            <div style="height: 10px;"></div>
+            <div class="text1">
+              We can see that our strategy output has a very large relative standard deviation compared to the population, but also has a left skew, signaling larger trade returns.  Let's impliment a Z test between the population and sample means to find out if the sample returns are statistically significant.
+            </div>
+            <div style="height: 10px;"></div>
+
+            <ul>
+              <li>
+              <p>Z  </p> = (X - u) / (std / sqtr(n))
+            </li>
+          
+            <div style="height: 10px;"></div>
+
+            <li>
+              <p>P_val  </p> = 1 - norm.cdf(z)
+            </li>
+            <div style="height: 10px;"></div>
+            <ul>
+              <li>
+              <p>Sample Mean: </p>1.801 %
+              </li>
+              <li>
+              <p>Sample Std:</p>   8.021  %
+              </li>
+              <li>
+                <p>Population Mean: </p>  0.061 %
+              </li>
+              <li>
+                <p>Population Std: </p> 2.229 % 
+              </li>
+              <li>
+                <p>Z-score: </p> 18.126 
+              </li>
+              <li>
+                <p>P-val: </p> 0.0 %
+              </li>
+            </ul>
+            <div style="height: 10px;"></div>
+            <div class="text1">
+              Looking at the sample std, this strategy seems to be very risky, but the model also tells us that it is significant and we can reject the null hypothesis. 
+            </div>
+            <div style="height: 10px;"></div>
+            <img src="/static/Cumret2023.png" alt=""
+            style="width: 27vw;
+            border-radius:5px"
+            >
+            <div style="height: 10px;"></div>
+            <div class="text1">
+              <p>2023 Cumulative Return: </p> ~40% 
+            </div>
+            <div class="text1">
+              <p>2023 Num Trades: </p> 172
+            </div>
+
+
           </div>
         </div>
     </section>

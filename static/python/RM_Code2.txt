@@ -1,0 +1,13 @@
+Ticker = []
+Date = []
+ret = []
+after_ret = []
+
+
+for b, c in zip(range(len(SS_df.columns)), SS_df.columns):
+    for j,k,l in zip(SS_df.iloc[:,b], SS_df.iloc[1:,b], SS_df.index):
+        if j <= -.1:
+            ret.append(j)
+            after_ret.append(k)
+            Date.append(l)
+            Ticker.append(c) 
