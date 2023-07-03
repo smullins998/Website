@@ -18,6 +18,8 @@
     <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet" />
     <script src="/static/javascript/model.js"></script>
     <script src="/static/javascript/popup.js"></script>
+    <script src="/static/javascript/text.js"></script>
+
 
   </head>
 
@@ -32,9 +34,7 @@
           Below, you will find my portfolio showcasing my work where I talk
           about my website, SongSpy, along with other projects. More to come...
         </p>
-      </div>
-
-    
+      </div>  
     </section>
 
     <div class="break1"></div>
@@ -216,17 +216,52 @@
             </ul>
             <div class="text1">
               The COVID pandemic has stirred sizable retail trading interest.
-              People are more connected and active about how frequently they trade, leading to adverse events being oversold as people rush to get out or get into a trade. We are going to backtest this strategy over different time periods, and with different company sizes. But first, we need to get data.
+              People are more connected and active about how frequently they trade, leading to adverse events being oversold as people rush to get out or get into a trade. We are going to backtest this hypothesis over different time periods. But first, we need to get data.
             </div>
             <div style="height: 10px;"></div>
             <div class="subheader1">Data Used</div>
             <div style="height: 10px;"></div>
            <div></div>
            <div class="text1">
-            We are going to get closing data for all equities listed on the Nasdaq (CODE) and create a back-testing period from 2010-Present.
+            We are going to get closing data for all equities listed on the Nasdaq and create a back-testing period from 2010-Present.
            </div>
            <div style="height: 10px;"></div>
 
+           <div class="modal1">
+            <a href="#" class="popup-link">CODE</a>
+            <div class="popup-modal">
+            <div class="popup-content">
+                <h2>Python Code</h2>
+                <div class="code-div">
+                <code class="codeContent">
+                  <pre>
+import yfinance as yf 
+from tqdm import tqdm 
+import pandas as pd 
+
+x=0 
+
+for i in tqdm(ticker_list): 
+
+    if x==0:
+        temp_df = yf.download('AAPL').Close 
+        temp_df = pd.DataFrame(temp_df) 
+        temp_df = temp_df.rename(columns={'Close':"AAPL"}) 
+        x+=1 
+    if x>0: 
+        temp_df1 = yf.download(i).Close 
+        temp_df1 = pd.DataFrame(temp_df1) 
+        temp_df1 = temp_df1.rename(columns={'Close':i}) 
+
+        temp_df = temp_df.merge(temp_df1, how='left',left_index=True, right_index=True)
+                </pre>
+                </code>
+                </div>
+                </div>
+            </div>
+            <script src="/static/javascript/script.js"></script>
+        </div>
+           <div style="height: 10px;"></div>
            <img src="/static/mytable.png" alt=""
            style="width: 25vw;
            border-radius:5px">
@@ -245,17 +280,54 @@
            <div class="subheader1">Statistical Test</div>
            <div style="height: 10px;"></div>
            <div class="text1">
-            We are going to setup a hypothesis test to see if the returns in our sample are significantly different from the population of returns. We are going to BUY the equity if there is a single-day return of less than 10%, and sell it the next day to understand if the stock was oversold and there is rebuying the following day. To summarize, here is the buy logic (CODE):
+            We are going to setup a hypothesis test to see if the returns in our sample are significantly different from the population of returns. We are going to BUY the equity if there is a single-day return of less than 10%, and sell it the next day to understand if the stock was oversold and there is rebuying the following day. To summarize, here is the buy logic:
            </div>
+           <div style="height: 10px;"></div>
+
+           <div class="modal1">
+            <a href="#" class="popup-link2">CODE</a>
+            <div class="popup-modal2">
+            <div class="popup-content">
+                <h2>Python Code</h2>
+                <div class="code-div">
+                <code class="codeContent">
+                  <pre>
+import numpy as np
+from scipy import stats
+from scipy.stats import norm
+
+Ticker = []
+Date = []
+ret = []
+after_ret = []
+
+for b, c in zip(range(len(SS_df.columns)), SS_df.columns):
+    for j,k,l in zip(SS_df.iloc[:,b], SS_df.iloc[1:,b], SS_df.index):
+        if j <= -.1:
+            ret.append(j)
+            after_ret.append(k)
+            Date.append(l)
+            Ticker.append(c)    
+                       
+RET_df = pd.DataFrame({'Date': Date, 'Ticker': Ticker, 'Return': ret, 'NextReturn': after_ret})
+                </pre>
+                </code>
+                </div>
+                </div>
+            </div>
+            <script src="/static/javascript/script2.js"></script>
+        </div>
+        <div style="height: 10px;"></div>
+  
            <ul>
             <li>
-              Market Capitalization > $5Bn
+              <p>Market Capitalization </p>  > $5Bn
             </li>
             <li>
-              Std < 5% & Trading Days > 400
+             <p>Std </p>  < 5% & <p> Trading Days </p>   > 400
             </li>
             <li>
-              1-day return < -10%
+              <p>Single-Day return </p>  < -10%
             </li>
            </ul>
           </div>
@@ -267,6 +339,48 @@
             <div class="text1">
               We can see that our strategy output has a very large relative standard deviation compared to the population, but also has a left skew, signaling larger trade returns.  Let's impliment a Z test between the population and sample means to find out if the sample returns are statistically significant.
             </div>
+            <div style="height: 10px;"></div>
+
+            <div class="modal1">
+              <a href="#" class="popup-link3">CODE</a>
+              <div class="popup-modal3">
+              <div class="popup-content">
+                  <h2>Python Code</h2>
+                  <div class="code-div">
+                  <code class="codeContent">
+                    <pre>
+ret_sample = RET_df.NextReturn
+
+population_mean = np.nanmean(SS_df)
+population_std = np.nanstd(SS_df)
+ret_mean = np.mean(ret_sample)
+ret_std = np.std(ret_sample, ddof=1)
+
+n = len(ret_sample)
+z = (ret_mean - population_mean) / (ret_std / np.sqrt(n))
+
+p_value = 1 - norm.cdf(z)
+
+
+print("Sample Mean:", round(ret_mean,5))
+print("Sample Standard Deviation:", round(ret_std,5))
+print("Population Mean:", round(population_mean,5))
+print("Population Standard Deviation:", round(population_std,5))
+print('Z-score', round(z, 5))
+print('P-val', p_value)
+                      
+                  </pre>
+                  </code>
+                  </div>
+                  </div>
+              </div>
+              <script src="/static/javascript/script3.js"></script>
+          </div>
+
+
+
+
+
             <div style="height: 10px;"></div>
 
             <ul>
@@ -309,18 +423,108 @@
             style="width: 27vw;
             border-radius:5px"
             >
-            <div style="height: 10px;"></div>
-            <div class="text1">
+
+              <ul>
+                <li>
               <p>2023 Cumulative Return: </p> ~40% 
-            </div>
-            <div class="text1">
+                </li>
+                <li>
               <p>2023 Num Trades: </p> 172
-            </div>
+                </li>
+             </ul>
             <div style="height: 10px;"></div>
             <div class="text1">
               In addition to the positive return, the strategy outperformed the S&P500 in 62% of the quarters dating back to 2010.
             </div>
-         
+            <div style="height: 10px;"></div>
+            <div class="text1">
+              Returns are seldom statistically significant, though, and if we split samples quarterly, only four quarters reach below a p-value of 5%. This tells us that this strategy may be more effective in the right market conditions...
+
+            </div>
+            <div style="height: 10px;"></div>
+            <div class="subheader1">Other Variables</div>
+            
+            <div style="height: 10px;"></div>
+            <div class="text1">
+              We can look for additional variables to refine returns, and further experiment with the strategy.
+            </div>
+            <img src="/static/pop_v_mean.png" alt=""
+            style="width: 27vw;
+            border-radius:5px"
+            >
+          </div>
+          <div class="col1">
+            <div style="height: 10px;"></div>
+            <div class="text1">
+              One statistic that stood out was the sample return's correlation to the population's standard deviation (+62%).
+              As we can see by the red regression line, this means that when the market is more volitile, this strategy usually performs better. 
+            </div>
+            <div class="text1">
+              We can take looks at other filters of the historical data: What happens when the investment period is two days, instead of intraday? What if we were more selective with the companies we traded with?
+            </div>
+
+            <div style="height: 10px;"></div>
+            <div class="subheader1">Results and Implimentation</div>
+            <div style="height: 10px;"></div>
+            <div class="text1">
+              Let's build this strategy using the Robinhood API to automatically execute trades for us. The logic for the trades:
+            </div>
+            <div class="modal1">
+              <a href="#" class="popup-link4">BUY</a>
+              <div class="popup-modal4">
+              <div class="popup-content">
+                  <h2>Python Code</h2>
+                  <div class="code-div">
+                  <code class="codeContent">
+                    <pre>
+def BuyStocks():
+ticker_ret = []
+ticker_loop = []
+
+#Get pct_change data for all tickers
+for i in tqdm(tickers.Symbol):
+    try:
+        ticker_symbol = i  
+
+        today = datetime.today().strftime('%Y-%m-%d')
+        previous_day = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+
+        stock = yf.Ticker(ticker_symbol)
+        history = stock.history(period='5d')
+
+        today_close_price = history['Close'][-1]
+        previous_close_price = history['Close'][-2]
+
+        percent_change = ((today_close_price - previous_close_price) / previous_close_price) * 100
+
+        ticker_ret.append(percent_change)
+        ticker_loop.append(i)
+    except:
+        print('error with', i)
+
+daily_ret_df = pd.DataFrame({'Ticker': ticker_loop, 'pctchange': ticker_ret})
+final_list = []
+
+#Logic to filter stocks
+for j in daily_ret_df.Ticker:
+    
+    mkt_cap = yf.Ticker(j).info['marketCap']
+    datetime.fromtimestamp(yf.Ticker(i).info['firstTradeDateEpochUtc'])
+    timedelta = datetime.today() - datetime.fromtimestamp(638721000)
+    
+    if mkt_cap > 5e+9 and timedelta.days > 400:
+        final_list.append(j)
+    
+return final_list
+                
+                  </pre>
+                  </code>
+                  </div>
+                  </div>
+              </div>
+              <script src="/static/javascript/script4.js"></script>
+          </div>
+        
 
           </div>
         </div>
