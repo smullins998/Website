@@ -24,12 +24,6 @@ section {
     height: fit-content;
 }
 
-ul > li {
-  list-style-type: circle; /* Bullet style (can be 'circle', 'square', etc.) */
-  margin-left: 10px; /* Indentation for the list */
-  padding-left: 10px; /* Padding for the list */
-}
-
 li {
   list-style-type: circle; /* Bullet style (can be 'circle', 'square', etc.) */
   font-family: 'Georgia';
@@ -190,9 +184,11 @@ li > p {
     padding-left: calc(var(--bs-gutter-x) * 0.8);
     flex: 0 0 auto;
     width: 33.33333333%;
-    line-height: 20px;    
+    line-height: 20px;   
+    text-align: center;
+  }
+    
 
-}
 
 .text1 {
     font-family: 'Georgia';
@@ -313,7 +309,7 @@ li > p {
   }
 
 
-.popup-modal, .popup-modal2, .popup-modal3, .popup-modal4 {
+.popup-modal, .popup-modal2, .popup-modal3, .popup-modal4, .popup-modal5{
   display: none;
   position: fixed;
   top: 0;
@@ -352,9 +348,8 @@ li > p {
 
 .modal1{
   display: inline-block;
-  text-align: left;
   justify-content: center;
-  margin-left: 40%;
+  text-align: left;
 }
 
 pre {
@@ -366,8 +361,12 @@ div > a {
   font-size: large;
   text-decoration: none;
   font-weight: bold;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  display:flex;
 }
+
+
 
 div > a:hover {
   color: #ff0000;

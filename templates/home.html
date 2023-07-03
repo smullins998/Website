@@ -79,8 +79,8 @@
               two features I found to perform classification the best are:
             </div>
             <ul style="font-size: 15px">
-              <li>MFCCs — Mel Frequency Cepstral Coefficients</li>
-              <li>Spectral Contrast</li>
+              <li><p>MFCCs — Mel Frequency Cepstral Coefficients </p></li>
+              <li><p>Spectral Contrast </p></li>
             </ul>
             <div class="text1">
               Both features emulate the audio file's spectrogram representation. MFCCs are heavily used in speech recognition and genre classification. 
@@ -469,53 +469,55 @@ print('P-val', p_value)
             <div class="text1">
               Let's build this strategy using the Robinhood API to automatically execute trades for us. The logic for the trades:
             </div>
+            <div style="height: 10px;"></div>
+
             <div class="modal1">
-              <a href="#" class="popup-link4">BUY</a>
+              <a href="#" class="popup-link4">BUYLIST</a>
               <div class="popup-modal4">
               <div class="popup-content">
                   <h2>Python Code</h2>
                   <div class="code-div">
                   <code class="codeContent">
                     <pre>
-def BuyStocks():
-ticker_ret = []
-ticker_loop = []
+def GetBuyStocks():
+  ticker_ret = []
+  ticker_loop = []
 
-#Get pct_change data for all tickers
-for i in tqdm(tickers.Symbol):
-    try:
-        ticker_symbol = i  
+  #Get pct_change data for all tickers
+  for i in tqdm(tickers.Symbol):
+      try:
+          today = datetime.today().strftime('%Y-%m-%d')
+          previous_day = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
 
-        today = datetime.today().strftime('%Y-%m-%d')
-        previous_day = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+          stock = yf.Ticker(i)
+          history = stock.history(period='5d')
 
-        stock = yf.Ticker(ticker_symbol)
-        history = stock.history(period='5d')
+          today_close_price = history['Close'][-1]
+          previous_close_price = history['Close'][-2]
 
-        today_close_price = history['Close'][-1]
-        previous_close_price = history['Close'][-2]
+          percent_change = ((today_close_price - previous_close_price) / previous_close_price) * 100
 
-        percent_change = ((today_close_price - previous_close_price) / previous_close_price) * 100
+          ticker_ret.append(percent_change)
+          ticker_loop.append(i)
+      except:
+          print('error with', i)
 
-        ticker_ret.append(percent_change)
-        ticker_loop.append(i)
-    except:
-        print('error with', i)
+  daily_ret_df = pd.DataFrame({'Ticker': ticker_loop, 'pctchange': ticker_ret})
+  final_list = []
 
-daily_ret_df = pd.DataFrame({'Ticker': ticker_loop, 'pctchange': ticker_ret})
-final_list = []
+  daily_ret_df = daily_ret_df[daily_ret_df.pctchange < -10]
 
-#Logic to filter stocks
-for j in daily_ret_df.Ticker:
-    
-    mkt_cap = yf.Ticker(j).info['marketCap']
-    datetime.fromtimestamp(yf.Ticker(i).info['firstTradeDateEpochUtc'])
-    timedelta = datetime.today() - datetime.fromtimestamp(638721000)
-    
-    if mkt_cap > 5e+9 and timedelta.days > 400:
-        final_list.append(j)
-    
-return final_list
+  #Logic to filter stocks
+  for j in daily_ret_df.Ticker:
+      
+      mkt_cap = yf.Ticker(j).info['marketCap']
+      epoch = yf.Ticker(i).info['firstTradeDateEpochUtc']
+      td = datetime.today() - datetime.fromtimestamp(epoch)
+      
+      if mkt_cap > 5e+9 and td.days > 400:
+          final_list.append(j)
+      
+  return final_list
                 
                   </pre>
                   </code>
@@ -524,8 +526,40 @@ return final_list
               </div>
               <script src="/static/javascript/script4.js"></script>
           </div>
-        
+          <div style="height: 10px;"></div>
 
+            <div class="modal1">
+              <a href="#" class="popup-link5">BUY & SELL</a>
+              <div class="popup-modal5">
+              <div class="popup-content">
+                  <h2>Python Code</h2>
+                  <div class="code-div">
+                  <code class="codeContent">
+                    <pre>
+def Buy(tick, num_shares):
+    r.order_buy_fractional_by_quantity(tick, num_shares)
+    
+def Sell(tick, num_shares):
+    r.order_sell_fractional_by_quantity(tick, num_shares) 
+    
+def buy_strategy(Buy_df):
+    for i, j in zip(Buy_df.Tickers, Buy_df.Quantity):
+        Buy(i, j)
+        
+def sell_strategy(Sell_df):
+    for i, j in zip(Sell_df.Ticker, Sell_df.Quantity):
+        Sell(i, j)
+        
+    
+
+                
+                  </pre>
+                  </code>
+                  </div>
+                  </div>
+              </div>
+              <script src="/static/javascript/script5.js"></script>
+          </div>
           </div>
         </div>
     </section>
