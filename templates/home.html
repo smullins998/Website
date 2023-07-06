@@ -438,8 +438,108 @@ print('P-val', p_value)
             </div>
             <div style="height: 10px;"></div>
             <div class="text1">
-              Returns are seldom statistically significant, though, and if we split samples quarterly, only four quarters reach below a p-value of 5%. This tells us that this strategy may be more effective in the right market conditions...
+              Returns are seldom statistically significant, though, and if we split samples quarterly, only four quarters reach below a p-value of 5%. This tells us that this strategy may be more effective in the right market conditions.
 
+            </div>
+
+            <div style="height: 10px;"></div>
+
+            <div class="text1">
+              We can see if this strategy generates alpha and how it correlates to market returns by running a regression on the market returns (X) versus the strategy returns (y).
+            </div>
+            <div style="height: 10px;"></div>
+
+            <div class="modal1">
+              <a href="#" class="popup-link6">CODE</a>
+              <div class="popup-modal6">
+              <div class="popup-content">
+                  <h2>Python Code</h2>
+                  <div class="code-div">
+                  <code class="codeContent">
+                    <pre>
+current_year = datetime.datetime.now().year
+start_year = 2010
+months = []
+
+for year in range(start_year, current_year + 1):
+    for month in range(1, 13):
+        month_start = datetime.datetime(year, month, 1)
+        months.append(month_start)
+
+months = [str(i) for i in months]
+SS_df.index = SS_df.index
+
+i_month = [], i_sample_m = [], i_sample_std = [], i_pop_m = [], i_pop_std = [], i_zscore = [], i_pval = [], i_SP_m = [], i_obs = []
+
+SP500 = yf.download("^GSPC").Close
+SP500 = pd.DataFrame(SP500.pct_change())
+
+for i, j in zip(months, months[1:]):
+    SS_df2 = SS_df[(SS_df.index > i) & (SS_df.index < j)]
+    Viz_df2 = Viz_df[(Viz_df.Date > i) & (Viz_df.Date < j)]
+
+    SP5002 = SP500[(SP500.index > i) & (SP500.index < j)]
+    SP_m = np.nanmean(SP5002)
+
+    population_mean2 = np.nanmean(SS_df2)
+    population_std2 = np.nanstd(SS_df2)
+    ret_mean2 = np.mean(Viz_df2.NextReturn)
+    ret_std2 = np.std(Viz_df2.NextReturn, ddof=1)
+
+    n2 = len(Viz_df2.NextReturn)
+    z2 = (ret_mean2 - population_mean2) / (ret_std2 / np.sqrt(n2))
+
+    p_value2 = round(1 - norm.cdf(z2), 3)
+
+    i_month.append(i)
+    i_sample_m.append(ret_mean2)
+    i_sample_std.append(ret_std2)
+    i_pop_m.append(population_mean2)
+    i_pop_std.append(population_std2)
+    i_zscore.append(z2)
+    i_pval.append(p_value2)
+    i_SP_m.append(SP_m)
+    i_obs.append(n2)
+
+df = pd.DataFrame({'date': i_month, 's_mean': i_sample_m, 's_std': i_sample_std,
+                    'pop_mean': i_pop_m, 'pop_std': i_pop_std,
+                    'z': i_zscore, 'p': i_pval, 'SP500': i_SP_m, 'Observations': i_obs})
+
+df['Perform'] = np.where(df.s_mean > df.SP500, 'Outperform', 'Underperform')
+df['ExcessReturns'] = df['s_mean'] - df['SP500']
+
+slope, intercept, r_value, p_value, std_err = stats.linregress(df['SP500'], df['ExcessReturns'])
+alpha = intercept
+print("Alpha:", round(alpha,5))
+print('Beta', round(slope, 5))
+print("P_val:", round(p_value,5))  
+                  </pre>
+                  </code>
+                  </div>
+                  </div>
+              </div>
+              <script src="/static/javascript/script6.js"></script>
+          
+          </div>
+          <div style="height: 10px;"></div>
+
+          <ul>
+            <li>
+          <p>Alpha </p> .30%
+            </li>
+            <li>
+          <p>Beta </p>  -.15
+            </li>
+            <li>
+              <p>P-Val </p> .76
+            </li>
+         </ul>
+          </div>
+
+          <div class="col1">
+            <div style="height: 10px;"></div>
+            <div class="text1">
+              We obtain an insignificant alpha, which may mean that additional factors, not the market, explain the high mean returns of the strategy.
             </div>
             <div style="height: 10px;"></div>
             <div class="subheader1">Other Variables</div>
@@ -452,9 +552,8 @@ print('P-val', p_value)
             style="width: 27vw;
             border-radius:5px"
             >
-          </div>
-          <div class="col1">
             <div style="height: 10px;"></div>
+
             <div class="text1">
               One statistic that stood out was the sample return's correlation to the population's standard deviation (+62%).
               As we can see by the red regression line, this means that when the market is more volitile, this strategy usually performs better. 

@@ -309,7 +309,7 @@ li > p {
   }
 
 
-.popup-modal, .popup-modal2, .popup-modal3, .popup-modal4, .popup-modal5{
+.popup-modal, .popup-modal2, .popup-modal3, .popup-modal4, .popup-modal5, .popup-modal6 {
   display: none;
   position: fixed;
   top: 0;
@@ -342,7 +342,7 @@ li > p {
 .code-div {
   border: solid black 2px;
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
   background-color: white;
 }
 
