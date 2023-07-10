@@ -5,6 +5,8 @@
     font-family: 'Circular Std', sans-serif;
     font-stretch: normal;
     overflow-x: hidden;
+    
+
                                              
 }
 
@@ -12,7 +14,12 @@
     background: #c7d4dd;
     color: #363636;
     overflow-x: hidden;
+    
+}
 
+iframe {
+  width: 40%;
+  height: 40%;
 }
 
 div {
@@ -22,6 +29,7 @@ div {
 
 section {
     height: fit-content;
+    overflow-y: hidden;
 }
 
 li {
@@ -63,8 +71,6 @@ li > p {
 }
 
 
-
-
 .home {
     height: 100vh;
     width: 100vw;
@@ -82,6 +88,7 @@ li > p {
     left: 150px;
     top:15%;
     position: absolute;
+
 }
 
 .home-content h1 {
@@ -92,6 +99,7 @@ li > p {
     animation: cool-text;
     animation-duration: 1.5s;
     animation: fadeIn 1s ease-in forwards;
+    overflow-y: hidden;
 
 }
 
@@ -101,8 +109,7 @@ li > p {
     font-weight: 1000px;
     color: #9a9999;
     animation: fadeIn 1s ease-in forwards;
-
-
+    overflow-y: hidden;
 }
 
 .home-content p {
@@ -112,8 +119,8 @@ li > p {
     padding-top: 10px;
     line-height: 45px;
     color: #353535;
-    font-weight:350;
-    
+    font-weight:350;   
+    overflow-y: hidden;
 }
 
 
@@ -208,6 +215,7 @@ li > p {
     text-align: left;
     font-weight: bold;
     color: black;
+    overflow-y: hidden;
 }
 
 .aboutme {
@@ -364,6 +372,7 @@ div > a {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   display:flex;
+  overflow-y: hidden;
 }
 
 
@@ -375,19 +384,23 @@ div > a:hover {
 }
 
 
-  @media (max-width: 800px)  {
-
-    .home-content h1 {
-      font-size: 9vw;
+  @media only screen and (max-width: 1000px) {
+    .home-content > h3 {
+      font-size: 8vw !important; /* Add !important to override other conflicting styles */
     }
-    .home-content h3 {
-        font-size: 7vw;
-      }
+    .home-content > h1 {
+      font-size: 10vw !important; /* Add !important to override other conflicting styles */
+    }
 
-    .home-content p {
-        font-size: 5vw;
-      }
-   
+    .home-content > p {
+      font-size: 3vw !important;
+      line-height: 8vw; /* Add !important to override other conflicting styles */
+    }
+    iframe {
+      width: 95%;
+      height: 25vw;
+      padding-top: 5vw;
+    }
   }
 
 
