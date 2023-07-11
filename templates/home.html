@@ -58,7 +58,7 @@
             </div>
             <div style="height: 10px"></div>
             <div class="text1">
-              The following model uses Machine Learning to identify artificailly
+              The following model uses Machine Learning to identify artificially
               generated music.
             </div>
             <div style="height: 10px"></div>
@@ -92,7 +92,7 @@
             <div class="text1">
               We conduct a PCA analysis to better understand the dimensionality
               of our features, and if there are variances between artists that
-              we can we confident in.
+              we can be confident in.
             </div>
             <img
               src="/static/PCA.png"
@@ -178,7 +178,7 @@
               </li>
               <li>
                 2) If the Shazam prediction is null or is different
-              from the model prediction, then this song is artifical.
+              from the model prediction, then this song is artificial.
               </li>
             </ul>
 
@@ -281,7 +281,7 @@ for i in tqdm(ticker_list):
            <div class="subheader1">Statistical Test</div>
            <div style="height: 10px;"></div>
            <div class="text1">
-            We are going to setup a hypothesis test to see if the returns in our sample are significantly different from the population of returns. We are going to BUY the equity if there is a single-day return of less than 10%, and sell it the next day to understand if the stock was oversold and there is rebuying the following day. To summarize, here is the buy logic:
+            We are going to setup a hypothesis test to see if the returns in our sample are significantly different from the population of returns. We are going to buy the equity if there is a single-day return of less than -10%, and sell it the next day to understand if the stock was oversold and there is rebuying the following day. To summarize, here is the buy logic:
            </div>
            <div style="height: 10px;"></div>
 
@@ -417,7 +417,7 @@ print('P-val', p_value)
             </ul>
             <div style="height: 10px;"></div>
             <div class="text1">
-              Looking at the sample std, this strategy seems to be very risky, but the model also tells us that it is significant and we can reject the null hypothesis. 
+              Looking at the sample std, this strategy seems to be very risky, but the model also tells us that the difference between the two means is significant and we can reject the null hypothesis. 
             </div>
             <div style="height: 10px;"></div>
             <img src="/static/Cumret2023.png" alt=""
@@ -446,7 +446,7 @@ print('P-val', p_value)
             <div style="height: 10px;"></div>
 
             <div class="text1">
-              We can see if this strategy generates alpha and how it correlates to market returns by running a regression on the market returns (X) versus the strategy returns (y).
+              We can run a regression to see if this strategy generates alpha. Market returns (X) are plotted against strategy returns (y).
             </div>
             <div style="height: 10px;"></div>
 
@@ -535,13 +535,14 @@ print("P_val:", round(p_value,5))
               <p>P-Val </p> .76
             </li>
          </ul>
+         <div style="height: 10px;"></div>
+
+         <div class="text1">
+          We obtain an insignificant alpha, which may mean that additional factors, not the market, explain the high mean returns of the strategy.
+        </div>
           </div>
 
-          <div class="col1">
-            <div style="height: 10px;"></div>
-            <div class="text1">
-              We obtain an insignificant alpha, which may mean that additional factors, not the market, explain the high mean returns of the strategy.
-            </div>
+          <div class="col1">            
             <div style="height: 10px;"></div>
             <div class="subheader1">Other Variables</div>
             
@@ -560,7 +561,7 @@ print("P_val:", round(p_value,5))
               As we can see by the red regression line, this means that when the market is more volitile, this strategy usually performs better. 
             </div>
             <div class="text1">
-              We can take looks at other filters of the historical data: What happens when the investment period is two days, instead of intraday? What if we were more selective with the companies we traded with?
+              We can take looks at other filters of the historical data: What happens when the investment period is two days, instead of intraday? What if we were more selective about the companies we traded?
             </div>
 
             <div style="height: 10px;"></div>
